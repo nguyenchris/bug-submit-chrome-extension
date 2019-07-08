@@ -11,7 +11,11 @@ prv_assets/
 # Production
 dist/
 
-config/
+# Config environment variables
+config/*
+
+# images
+
 
 # Runtime data
 pids
