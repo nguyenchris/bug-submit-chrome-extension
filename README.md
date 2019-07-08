@@ -1,5 +1,3 @@
-# A Chrome extension boilerplate.
-
 ## Basic Usage
 
 ``` 
