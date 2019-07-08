@@ -14,8 +14,6 @@ dist/
 # Config environment variables
 config/*
 
-# images
-
 
 # Runtime data
 pids
