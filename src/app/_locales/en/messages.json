@@ -1,10 +1,10 @@
 {
   "appName": {
-    "message": "history remover",
-    "description": "The name of the application"
+    "message": "Report a Bug - Amerisleep",
+    "description": "Report a Bug"
   },
   "appDescription": {
-    "message": "My Chrome Extension",
-    "description": "The description of the application"
+    "message": "Report a Bug - Amerisleep",
+    "description": "A Google Chrome extension that provides the ability to report a bug found within Amerisleep's webpages and applications. * Distribution is prohibited *"
   }
 }

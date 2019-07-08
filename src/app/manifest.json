@@ -4,26 +4,28 @@
   "manifest_version": 2,
   "description": "__MSG_appDescription__",
   "icons": {
-    "16": "images/icon-16.png",
-    "128": "images/icon-128.png"
+    "16": "images/favicon.ico",
+    "128": "images/favicon.ico"
   },
   "default_locale": "en",
   "background": {
-    "scripts": [
-      "background.bundle.js"
-    ]
+    "scripts": ["background.bundle.js"],
+    "persistent": false
   },
-  "permissions": [
-    "history" ,
-    "webNavigation" ,
-    "*://*/*"
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content_script.bundle.js"]
+    }
   ],
+  "permissions": ["activeTab", "contextMenus", "storage", "*://*/*"],
   "browser_action": {
     "default_icon": {
-      "19": "images/icon-19.png",
-      "38": "images/icon-38.png"
+      "19": "images/favicon.ico",
+      "38": "images/favicon.ico"
     },
-    "default_title": "history remover",
+    "default_title": "Report a Bug - Amerisleep",
     "default_popup": "popup.html"
-  }
+  },
+  "content_security_policy": "script-src 'self' 'sha256-GgRxrVOKNdB4LrRsVPDSbzvfdV4UqglmviH9GoBJ5jk='; object-src 'self'"
 }

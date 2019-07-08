@@ -1,0 +1,4 @@
+{
+  "presets": [ "@babel/preset-env" , "minify" , "@babel/preset-typescript" ],
+  "plugins": [["import", { "libraryName": "antd", "style": "css" }]]
+}
