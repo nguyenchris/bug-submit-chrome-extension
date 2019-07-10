@@ -1,11 +1,11 @@
 @font-face {
   font-family: SofiaPro;
-  src: url(fonts/SofiaPro-Medium.woff2);
+  src: url(../fonts/SofiaPro-Medium.woff2);
 }
 
 @font-face {
   font-family: SofiaPro-Bold;
-  src: url(SofiaProBold.woff2);
+  src: url(../fonts/SofiaProBold.woff2);
 }
 
 body {

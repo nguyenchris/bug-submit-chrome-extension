@@ -1,6 +1,6 @@
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
@@ -12,18 +12,21 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.((jsx)|(jpg))$/,
+        test: /\.(js|jsx)$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
         options: {
-          presets: ['@babel/preset-react', '@babel/preset-env'],        }
+          presets: ['@babel/preset-env', '@babel/preset-react']
+        }
       },
       {
         test: /src\.m?((js)|(jpg))$/,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']          }
+            presets: ['@babel/preset-env']
+          }
         }
       },
       {
@@ -36,8 +39,8 @@ module.exports = {
         }
       },
       {
-        test: /\.css$/,
-        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }]
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.less$/,
@@ -50,6 +53,18 @@ module.exports = {
           },
           {
             loader: 'less-loader' // compiles Less to CSS
+          }
+        ]
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images/'
+            }
           }
         ]
       },
@@ -69,18 +84,23 @@ module.exports = {
   },
   plugins: [
     new webpack.ProgressPlugin(),
-    // new CleanWebpackPlugin(),
+    new CleanWebpackPlugin(),
     new CopyWebpackPlugin(
       [{ from: './popup-page/popup.html', force: true }, { from: './src/app/', force: true }],
       {}
     )
   ],
+  // optimization: {
+  //   splitChunks: {
+  //     chunks: 'all'
+  //   }
+  // },
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].bundle.js'
   },
   resolve: {
-    modules: ['./src/data', 'node_modules'],
+    modules: ['./src', 'node_modules'],
     extensions: ['.js', '.jsx', '.json', '.jpg']
   }
 };
